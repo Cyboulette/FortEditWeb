@@ -1,6 +1,8 @@
 socket = io.connect(window.config.serverURL, {secure: true});
 $(function(){
 
+	var currentUsername = null;
+
 	var sessionIDUrl = getUrlParameter('sessionID');
 	if(sessionIDUrl && sessionIDUrl != true && sessionIDUrl.length>0) {
 		var isGoodUsername = false;
@@ -42,6 +44,7 @@ $(function(){
 			window.load(retour.map);
 			window.config.currentSocket = retour.socketID;
 			window.config.currentRoom = retour.idCarte;
+			currentUsername = retour.username;
 			$('#modal-welcome').remove();
 			$('.modal-backdrop').remove();
 			$('body').removeClass('modal-open');
@@ -154,6 +157,17 @@ $(function(){
 	socket.on('openFile', function(data) {
 		if(data.socketId != window.config.currentSocket) {
 			window.load(data.map);
+		}
+	});
+
+	socket.on('disconnect', function() {
+		notify('error', 'Connexion au serveur perdue ... Tentative de reconnexion !');
+	});
+
+	socket.on('connect', function() {
+		notify('success', 'Connecté au serveur !');
+		if(window.config.currentRoom != null && window.config.currentSocket != null) {
+			socket.emit('connectToMap', {idCarte: window.config.currentRoom, username: currentUsername});
 		}
 	});
 
