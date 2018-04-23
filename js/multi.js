@@ -1,4 +1,4 @@
-socket = io.connect(window.config.serverURL);
+socket = io.connect(window.config.serverURL, {secure: true});
 $(function(){
 
 	var sessionIDUrl = getUrlParameter('sessionID');

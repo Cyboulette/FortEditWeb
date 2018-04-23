@@ -32,7 +32,7 @@ var config = {
 	typeLoaded: 0, // Type de carte chargée
 	currentSocket: null,
 	currentRoom: null,
-	serverURL: 'http://serveur.cyboulette.fr:3000/'
+	serverURL: 'https://fortedit.cyboulette.fr:3000/'
 };
 // Position de la souris et du sélecteur
 var mousePosition = {

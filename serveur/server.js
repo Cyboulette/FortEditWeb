@@ -7,11 +7,22 @@ var http = require('http');
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 var cors = require('cors');
+var fs = require('fs');
+var https = require('https');
 
 var app = express();
 app.use(morgan('dev'));
 app.use(bodyParser());
-app.use(cors());
+app.use(cors({origin: '195.154.163.98'}));
+
+var server = https.createServer({
+	key: fs.readFileSync('./fortedit.key'),
+	cert: fs.readFileSync('./fortedit.crt'),
+	ca: fs.readFileSync('./fortedit.ca'),
+	requestCert: false,
+	rejectUnauthorized: true
+}, app);
+server.listen(port, hostname);
 
 var server = app.listen(port, hostname);
 var io = require('socket.io').listen(server);
