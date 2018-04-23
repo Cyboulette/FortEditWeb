@@ -1,0 +1,106 @@
+#carte, #editeur {
+	position: relative;
+}
+
+#notify-center {
+	position: absolute;
+	width: auto;
+	max-width: 300px;
+	z-index: 99999;
+	right: 0;
+}
+
+#notify-center .notification {
+	top: 4px;
+	right: 0;
+}
+
+#carte {
+	cursor: none;
+	width: 2000px;
+	height: 1000px;
+	margin: 10px;
+	overflow-y: hidden;
+	overflow-x: auto;
+	max-width: calc(100% - 10px);
+}
+
+#editeur, #menu-header {
+	display: none;
+}
+
+#join-map-group {
+	display: none;
+}
+
+#rejoindre-map {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+#id-map-join {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+#modal-welcome {
+	display: block;
+	padding-right: 17px;
+}
+
+#menu-header, #menu {
+	z-index: 900;
+}
+
+#menu {
+	margin: 10px;
+}
+
+#menu .btn-change-code {
+	opacity: 0.4;
+	border: none;
+}
+
+#menu .btn-change-code.active {
+	opacity: 1;
+	outline: none;
+	box-shadow: none;
+	border: none;
+}
+
+#file-carte {
+	display: none;
+}
+
+#cursor, .cursor {
+	position: absolute;
+	z-index: 500;
+	border: 1px dashed red;
+	background-color: rgba(255, 255, 120, 0.2);
+	width: 10px;
+	height: 10px;
+}
+
+.player {
+	position: absolute;
+	z-index: 500;
+	width: 20px;
+	height: 20px;
+	border-radius: 100%;
+}
+
+.player .text-username {
+	color: white;
+	background-color: black;
+	position: absolute;
+	border-radius: 5px;
+	padding: 4px;
+}
+
+#menu .btn {
+	border-radius: 0;
+}
+
+.btn {
+	color: white;
+}
