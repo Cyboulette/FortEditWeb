@@ -1,7 +1,6 @@
 var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-var hostname = 'localhost';
 var port = 3000;
 var http = require('http');
 var MongoClient = require('mongodb').MongoClient;
@@ -16,15 +15,13 @@ app.use(bodyParser());
 app.use(cors({origin: '195.154.163.98'}));
 
 var server = https.createServer({
-	key: fs.readFileSync('./fortedit.key'),
-	cert: fs.readFileSync('./fortedit.crt'),
-	ca: fs.readFileSync('./fortedit.ca'),
+	key: fs.readFileSync('/etc/letsencrypt/live/fortedit.cyboulette.fr/privkey.pem'),
+	cert: fs.readFileSync('/etc/letsencrypt/live/fortedit.cyboulette.fr/fullchain.pem'),
 	requestCert: false,
 	rejectUnauthorized: true
 }, app);
-server.listen(port, hostname);
+server.listen(port);
 
-var server = app.listen(port, hostname);
 var io = require('socket.io').listen(server);
 
 
